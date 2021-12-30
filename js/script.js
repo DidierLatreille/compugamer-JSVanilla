@@ -186,3 +186,4 @@ for (const producto of carritoCompras){
 }
 
 document.getElementById("presupuestoCalculado").innerHTML = totalCarrito;
+console.log(totalCarrito);
