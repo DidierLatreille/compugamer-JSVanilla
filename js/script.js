@@ -78,7 +78,7 @@ class placaVideo{
 function pedirModGPU(){
     let opcionMenuGPU;
     let modGPU;
-    do {opcionMenuGPU = parseInt(prompt("Elige un procesador:\n" + "1. RX 580 8GB ($100.000)\n" + "2. RX 6700 XT($250.000)\n" + "3. RX 6800 XT($400.000)"));}
+    do {opcionMenuGPU = parseInt(prompt("Elige una placa de video:\n" + "1. RX 580 8GB ($100.000)\n" + "2. RX 6700 XT($250.000)\n" + "3. RX 6800 XT($400.000)"));}
     while (opcionMenuGPU < 1 || opcionMenuGPU > 3 || Number.isNaN(opcionMenuGPU));
 
     switch(opcionMenuGPU){
@@ -131,7 +131,7 @@ class memRAM{
 function pedirModRAM(){
     let opcionMenuRAM;
     let modRAM;
-    do {opcionMenuRAM = parseInt(prompt("Elige un procesador:\n" + "1. Corsair 16GB 3000MHZ($10.500)\n" + "2. HyperX 16GB 3200MHZ($14.500)\n" + "3. Trident 16GB 3600MHZ($20.000)"));}
+    do {opcionMenuRAM = parseInt(prompt("Elige una memoria RAM:\n" + "1. Corsair 16GB 3000MHZ($10.500)\n" + "2. HyperX 16GB 3200MHZ($14.500)\n" + "3. Trident 16GB 3600MHZ($20.000)"));}
     while (opcionMenuRAM < 1 || opcionMenuRAM > 3 || Number.isNaN(opcionMenuRAM));
 
     switch(opcionMenuRAM){
