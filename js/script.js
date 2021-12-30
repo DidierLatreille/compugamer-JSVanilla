@@ -25,7 +25,7 @@ class procesador{
 function pedirModProce(){
     let opcionMenuProce;
     let modProce;
-    do {opcionMenuProce = parseInt(prompt("Elige un procesador:\n" + "1. Ryzen 5 2600 ($22.000)\n" + "2. Ryzen 5 3600($30.000)\n" + "3. Ryzen 5 5600(43.000)"));}
+    do {opcionMenuProce = parseInt(prompt("Elige un procesador:\n" + "1. Ryzen 5 2600 ($22.000)\n" + "2. Ryzen 5 3600($30.000)\n" + "3. Ryzen 5 5600($43.000)"));}
     while (opcionMenuProce < 1 || opcionMenuProce > 3 || Number.isNaN(opcionMenuProce));
 
     switch(opcionMenuProce){
@@ -156,3 +156,16 @@ const RAMElegido = new memRAM(modeloRAMElegido);
 RAMElegido.calcularPrecio();
 
 console.log(RAMElegido);
+
+//--------------------------CARRITO----------------------------
+
+function Carrito(precioCPU,precioGPU,precioRAM){
+    this.total = precioCPU + precioGPU + precioRAM;
+}
+
+const carritoCompras = new Carrito(procesadorElegido.precio,GPUElegido.precio,RAMElegido.precio);
+console.log(carritoCompras);
+document.getElementById("presupuestoCalculado").innerHTML = carritoCompras.total;
+
+//No estoy seguro de que este bien organizado el codigo.-----------
+//La definicion de clases y objetos se puede hacer todo junto arriba, y las llamadas juntas abajo no?-----------

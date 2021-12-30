@@ -1,0 +1,70 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+.banner{
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    width: 100vw;
+    height: 100px;
+    background-color: rgb(241, 118, 16);
+    box-shadow: 5px 1px 5px black;
+}
+
+.tituloBanner{
+    margin: 10px;
+    font-family: 'Dosis', sans-serif;
+    font-weight: 600;
+    font-size: 60px;
+}
+
+.cajaPresupuesto{
+    margin: 10px;
+    width: 100vw;
+    height: 500px;
+    background-color: rgb(238, 238, 238);
+    box-shadow: 5px 1px 5px black;
+}
+
+.subtitulo{
+    text-align: left;
+    font-family: 'Dosis', sans-serif;
+    font-weight: 600;
+    font-size: 40px;
+}
+
+.componente{
+    font-family: 'Dosis', sans-serif;
+    font-weight: 550;
+    font-size: 20px;
+}
+
+.optionsDropMenu{
+    margin: 5px 0px;
+    font-family: 'Dosis', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+}
+
+.enviar{
+    font-family: 'Dosis', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: rgb(241, 118, 16);
+}
+
+.total{
+    font-family: 'Dosis', sans-serif;
+    font-weight: 550;
+    font-size: 20px;
+}
+
+#presupuestoCalculado{
+    color: rgb(241, 118, 16);
+}
