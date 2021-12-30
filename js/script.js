@@ -159,13 +159,30 @@ console.log(RAMElegido);
 
 //--------------------------CARRITO----------------------------
 
-function Carrito(precioCPU,precioGPU,precioRAM){
-    this.total = precioCPU + precioGPU + precioRAM;
-}
+//function Carrito(precioCPU,precioGPU,precioRAM){
+//    this.total = precioCPU + precioGPU + precioRAM;
+//}
 
-const carritoCompras = new Carrito(procesadorElegido.precio,GPUElegido.precio,RAMElegido.precio);
-console.log(carritoCompras);
-document.getElementById("presupuestoCalculado").innerHTML = carritoCompras.total;
+//const carritoCompras = new Carrito(procesadorElegido.precio,GPUElegido.precio,RAMElegido.precio);
+//console.log(carritoCompras);
+//document.getElementById("presupuestoCalculado").innerHTML = carritoCompras.total;
 
 //No estoy seguro de que este bien organizado el codigo.-----------
 //La definicion de clases y objetos se puede hacer todo junto arriba, y las llamadas juntas abajo no?-----------
+
+//Procedo a hacer el Desafio de la clase 6, y agrego un Array, que sea basicamente, un carrito de compras.
+
+const carritoCompras = [];
+carritoCompras.push(procesadorElegido);
+carritoCompras.push(GPUElegido);
+carritoCompras.push(RAMElegido);
+
+console.log(carritoCompras);
+
+let totalCarrito = 0;
+
+for (const producto of carritoCompras){
+    totalCarrito = totalCarrito + producto.precio;
+}
+
+document.getElementById("presupuestoCalculado").innerHTML = totalCarrito;
