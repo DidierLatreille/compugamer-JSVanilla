@@ -98,11 +98,11 @@ function pedirModGPU(){
 
 let modeloGPUElegido = pedirModGPU();
 
-const GPUElegido = new placaVideo(modeloGPUElegido);
+const gpuElegido = new placaVideo(modeloGPUElegido);
 
-GPUElegido.calcularPrecio();
+gpuElegido.calcularPrecio();
 
-console.log(GPUElegido);
+console.log(gpuElegido);
 
 //---------------------------------RAM--------------------------------------------//
 
@@ -151,11 +151,11 @@ function pedirModRAM(){
 
 let modeloRAMElegido = pedirModRAM();
 
-const RAMElegido = new memRAM(modeloRAMElegido);
+const ramElegido = new memRAM(modeloRAMElegido);
 
-RAMElegido.calcularPrecio();
+ramElegido.calcularPrecio();
 
-console.log(RAMElegido);
+console.log(ramElegido);
 
 //--------------------------CARRITO----------------------------
 
@@ -174,8 +174,8 @@ console.log(RAMElegido);
 
 const carritoCompras = [];
 carritoCompras.push(procesadorElegido);
-carritoCompras.push(GPUElegido);
-carritoCompras.push(RAMElegido);
+carritoCompras.push(gpuElegido);
+carritoCompras.push(ramElegido);
 
 console.log(carritoCompras);
 
