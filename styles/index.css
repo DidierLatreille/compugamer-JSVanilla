@@ -1,7 +1,9 @@
 * {
     padding: 0px;
     margin: 0px;
+    box-sizing: border-box;
 }
+/* TITULO */
 
 .banner{
     padding: 0px;
@@ -24,12 +26,14 @@
     font-size: 60px;
 }
 
+/* SECCION PRODUCTOS */
+
 .cajaPresupuesto{
     margin: 10px;
-    width: 100vw;
+    width: 98.5vw;
     height: 500px;
     background-color: rgb(238, 238, 238);
-    box-shadow: 5px 1px 5px black;
+    box-shadow: 5px 1px 5px rgb(146, 146, 146);
 }
 
 .subtitulo{

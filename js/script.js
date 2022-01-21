@@ -3,6 +3,12 @@ let totalCarrito = 0;
 let procesadorElegido;
 let gpuElegido;
 let ramElegido;
+let procesadorElegidoJSON;
+let gpuElegidoJSON;
+let ramElegidoJSON;
+let listadoCarritoPrevio = "";
+let listadoCarritoActual = "";
+
 class Procesador{
     constructor(modeloProce,precioTotal){
         this.modelo = modeloProce;
@@ -55,18 +61,48 @@ function pedirModRAM(ramSeleccionado){
 }
 
 function actualizarCPUCarrito(cpu){
-    carritoCompras[0] = cpu
+    carritoCompras[0] = cpu;
+    procesadorElegidoJSON = JSON.stringify(procesadorElegido)
+    localStorage.setItem("procesador", procesadorElegidoJSON);
 }
 
 function actualizarGPUCarrito(gpu){
     carritoCompras[1]= gpu;
+    gpuElegidoJSON = JSON.stringify(gpuElegido);
+    localStorage.setItem("gpu", gpuElegidoJSON);
 }
 
 function actualizarRAMCarrito(ram){
     carritoCompras[2]= ram;
+    ramElegidoJSON = JSON.stringify(ramElegido);
+    localStorage.setItem("ram", ramElegidoJSON);
 }
 
-function actualizarCarrito(){
+function traerListadoStorage(){
+    carritoCompras[0] = JSON.parse(localStorage.getItem("procesador"));
+    carritoCompras[1] = JSON.parse(localStorage.getItem("gpu"));
+    carritoCompras[2] = JSON.parse(localStorage.getItem("ram"));
+}
+
+function traerListadoPrevio(){
+    traerListadoStorage();
+    for (const producto of carritoCompras){
+        listadoCarritoPrevio = listadoCarritoPrevio + producto.modelo + " - ";
+    }
+    document.getElementById("listadoCarritoPrevio").innerHTML = listadoCarritoPrevio;
+    actualizarTotalCarrito();
+}
+
+function actualizarListadoCarrito(){
+
+    for (const producto of carritoCompras){
+        listadoCarritoActual = listadoCarritoActual + producto.modelo + " - ";
+    }
+    document.getElementById("listadoCarritoActual").innerHTML = listadoCarritoActual;
+    actualizarTotalCarrito();
+}
+
+function actualizarTotalCarrito(){
     totalCarrito = 0;
     for (const producto of carritoCompras){
         totalCarrito = totalCarrito + producto.precio;
@@ -74,3 +110,7 @@ function actualizarCarrito(){
     document.getElementById("presupuestoCalculado").innerHTML = totalCarrito;
     console.log(totalCarrito);
 }
+
+window.addEventListener('load', function(){
+    traerListadoPrevio();
+})
