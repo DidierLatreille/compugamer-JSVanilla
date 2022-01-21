@@ -93,6 +93,10 @@ function traerListadoPrevio(){
     actualizarTotalCarrito();
 }
 
+function resetearCarritoActual(){
+    listadoCarritoActual = "";
+}
+
 function actualizarListadoCarrito(){
 
     for (const producto of carritoCompras){
@@ -100,6 +104,7 @@ function actualizarListadoCarrito(){
     }
     document.getElementById("listadoCarritoActual").innerHTML = listadoCarritoActual;
     actualizarTotalCarrito();
+    resetearCarritoActual();
 }
 
 function actualizarTotalCarrito(){
