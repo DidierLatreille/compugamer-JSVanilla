@@ -11,46 +11,38 @@
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;700&display=swap" rel="stylesheet">
 </head>
 <body>
+     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <div class="banner">
         <h1 class="tituloBanner">COMPUGAMER</h1>
     </div>
     <div class="cajaPresupuesto">
-        <h2 class="subtitulo">Arma tu PC Gamer!</h2>
-        <div class="formComponentes">
-            <form id="formPresupuesto">
-                <h3 class="componente">PROCESADOR</h3>
-                <select class= "optionsDropMenu" name="cpu" id="cpu" onclick="pedirModProce(this.value)">
-                    <option disabled selected value> Elige tu futuro procesador </option>
-                    <option value="r52600">Ryzen 5 2600 ($22.000)</option>
-                    <option value="r53600">Ryzen 5 3600 ($30.000)</option>
-                    <option value="r55600">Ryzen 5 5600 ($43.000)</option>
-                </select>
-                <h3 class="componente">PLACA DE VIDEO</h3>
-                <select class= "optionsDropMenu" name="gpu" id="gpu" onclick="pedirModGPU(this.value)">
-                    <option disabled selected value> Elige tu futura placa de video </option>
-                    <option value="RX580">RX 580 8GB ($100.000)</option>
-                    <option value="RX6700XT">RX 6700 XT ($250.000)</option>
-                    <option value="RX6800XT">RX 6800 XT ($400.000)</option>
-                </select>
-                <h3 class="componente">MEMORIA RAM</h3>
-                <select class= "optionsDropMenu" name="ram" id="ram" onclick="pedirModRAM(this.value)">
-                    <option disabled selected value> Elige tu futura RAM </option>
-                    <option value="Corsair16">Corsair 16GB 3000MHZ ($10.500)</option>
-                    <option value="HyperX16">HyperX 16GB 3200MHZ ($14.500)</option>
-                    <option value="Trident16">Trident 16GB 3600MHZ ($20.000) </option>
-                </select>
-                <button type="button" id="botonPresupuesto" onclick="actualizarListadoCarrito()">Calcular presupuesto</button>
-            </form>
-        </div>
-        <div class="total">
-            <h3 class="totalPresupuesto" on>Productos seleccionados previamente: <span id="listadoCarritoPrevio"></span></h3>
-        </div>
-        <div class="total">
-            <h3 class="totalPresupuesto" on>Productos seleccionados: <span id="listadoCarritoActual"></span></h3>
-        </div>
-        <div class="total">
-            <h3 class="totalPresupuesto">Su total es de AR$ <span id="presupuestoCalculado"></span></h3>
-        </div>
+
+        <h2 class="subtitulo rainbow_text_animated">Arma tu PC Gamer!</h2>
+        
+        <section id="cpus" class="card_productos">
+            <h2 class="subtitulo_section">Procesadores</h2>
+        </section>
+
+        <section id="gpus" class="card_productos">
+            <h2 class="subtitulo_section">Placas de Video</h2>
+        </section>
+
+        <section id="rams" class="card_productos">
+            <h2 class="subtitulo_section">Memorias RAM</h2>
+        </section>
+
+        <section class="section-carrito">
+            <div class="card-carrito_productos">
+                <h3 class="titulo-carrito-productos">Carrito: </h3>
+                <p class="lista-productos-carrito"></p>   
+            </div>
+            <div class="card_carrito">
+                <h3 class="titulo-carrito-total">Total: </h3>
+                <p class="total-carrito"></p> 
+            </div>  
+            <img onclick="vaciarCarrito()" class= "tacho" src="assets/tacho.png" alt="">
+        </section>
+
     </div>
     <script src="js/script.js"></script>
 </body>

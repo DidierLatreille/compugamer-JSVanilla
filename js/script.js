@@ -1,121 +1,79 @@
-const carritoCompras = [];
-let totalCarrito = 0;
-let procesadorElegido;
-let gpuElegido;
-let ramElegido;
-let procesadorElegidoJSON;
-let gpuElegidoJSON;
-let ramElegidoJSON;
-let listadoCarritoPrevio = "";
-let listadoCarritoActual = "";
-
-class Procesador{
-    constructor(modeloProce,precioTotal){
-        this.modelo = modeloProce;
-        this.precio = precioTotal;
-    }
-}
-class PlacaVideo{
-    constructor(modeloGPU,precioTotal){
-        this.modelo = modeloGPU;
-        this.precio = precioTotal;
+class Producto{
+    constructor(modelo,portada,precio,categoria,id){
+        this.modelo = modelo;
+        this.portada = portada;
+        this.precio = precio;
+        this.categoria = categoria;
+        this.id = id;
     }
 }
 
-class MemRAM{
-    constructor(modeloRAM,precioTotal){
-        this.modelo = modeloRAM;
-        this.precio = precioTotal;
+
+const cpu1 = new Producto("Ryzen 5 2600", "assets/r5_2600.png", 22000, "cpus");
+const cpu2 = new Producto("Ryzen 5 3600", "assets/r5_3600.png", 30000, "cpus");
+const cpu3 = new Producto("Ryzen 5 5600", "assets/r5_5600.png", 43000, "cpus");
+
+const gpu1 = new Producto("RX 580", "assets/rx_580.png", 100000, "gpus");
+const gpu2 = new Producto("RX 6700XT", "assets/rx_6700xt.png", 250000, "gpus");
+const gpu3 = new Producto("RX 6800XT", "assets/rx_6800xt.png", 400000, "gpus");
+
+const ram1 = new Producto("Corsair 16GB (3000MHZ)", "assets/corsair_16.png", 10500, "rams");
+const ram2 = new Producto("HyperX 16GB (3200MHZ)", "assets/hyperx_16.png", 14500, "rams");
+const ram3 = new Producto("Trident 16GB (3600MHZ)", "assets/trident_16.png", 20000, "rams");
+
+let listaProductos = [cpu1,cpu2,cpu3,gpu1,gpu2,gpu3,ram1,ram2,ram3];
+
+function ordernarListaProductos(){
+    listaProductos.sort(function (a, b){
+        return (a.precio - b.precio)
+    })
+}
+
+function crearCards(){
+    let i = 0;
+
+    for(const producto of listaProductos){
+        producto.id = i++;
+        $(`#${producto.categoria}`).append( ` <div>
+                                <h3 class="card_title"> ${producto.modelo}</h3>
+                                <img src=${producto.portada} class="card_portada" alt="imagenFachera">
+                                <p class="card_price"> $${producto.precio}</p>
+                                <button onclick="agregarAlCarrito(${producto.id})" class="card_btn" >Agregar al carrito</button>
+                                </div>`).find('div:last').addClass('card');  
     }
 }
 
-const ryzen5_2600 = new Procesador("r52600", 22000);
-const ryzen5_3600 = new Procesador("r53600", 30000);
-const ryzen5_5600 = new Procesador("r55600", 43000);
-
-const rx580_8gb = new PlacaVideo("RX580", 100000);
-const rx6700_xt = new PlacaVideo("RX6700XT", 250000);
-const rx6800_xt = new PlacaVideo("RX6800XT", 400000);
-
-const corsair16_3000 = new MemRAM("Corsair16", 10500);
-const hyperX16_3200 = new MemRAM("HyperX16", 14500);
-const trident16_3600 = new MemRAM("Trident16", 20000);
-
-let listaCPU = [ryzen5_2600, ryzen5_3600, ryzen5_5600];
-let listaGPU = [rx580_8gb, rx6700_xt, rx6800_xt];
-let listaRAM = [corsair16_3000, hyperX16_3200, trident16_3600];
-
-function pedirModProce(cpuSeleccionado){
-    procesadorElegido = listaCPU.find(cpu => cpu.modelo == cpuSeleccionado);
-    actualizarCPUCarrito(procesadorElegido);
+if(localStorage.getItem("total-carrito-storage") === null){
+    localStorage.setItem("total-carrito-storage", 0);
 }
 
-function pedirModGPU(gpuSeleccionado){
-    gpuElegido = listaGPU.find(gpu => gpu.modelo == gpuSeleccionado);
-    actualizarGPUCarrito(gpuElegido);
+let totalCarrito = parseInt(localStorage.getItem("total-carrito-storage"));
+let modelos = [];
+modelos.push(localStorage.getItem("listado_productos"));
+
+document.getElementsByClassName("total-carrito")[0].innerHTML = "$"+localStorage.getItem("total-carrito-storage");
+document.getElementsByClassName("lista-productos-carrito")[0].innerHTML = localStorage.getItem("listado_productos");
+
+function actualizarCarrito(){
+    localStorage.setItem("total-carrito-storage", totalCarrito);
+    localStorage.setItem("listado_productos", modelos.join(" - "));
+    document.getElementsByClassName("total-carrito")[0].innerHTML = "$"+totalCarrito;
+    document.getElementsByClassName("lista-productos-carrito")[0].innerHTML = modelos.join(" - ");
+}
+    
+function agregarAlCarrito(pos){
+    totalCarrito += listaProductos[pos].precio;
+    modelos.push(listaProductos[pos].modelo);
+    actualizarCarrito();
+    return totalCarrito;
 }
 
-function pedirModRAM(ramSeleccionado){
-    ramElegido = listaRAM.find(ram => ram.modelo == ramSeleccionado);
-    actualizarRAMCarrito(ramElegido);
+function vaciarCarrito(){
+    modelos = [];
+    totalCarrito=0;
+    localStorage.setItem("total-carrito-storage", totalCarrito);
+    localStorage.setItem("listado_productos", modelos.join(" - "));
+    actualizarCarrito();   
 }
 
-function actualizarCPUCarrito(cpu){
-    carritoCompras[0] = cpu;
-    procesadorElegidoJSON = JSON.stringify(procesadorElegido)
-    localStorage.setItem("procesador", procesadorElegidoJSON);
-}
-
-function actualizarGPUCarrito(gpu){
-    carritoCompras[1]= gpu;
-    gpuElegidoJSON = JSON.stringify(gpuElegido);
-    localStorage.setItem("gpu", gpuElegidoJSON);
-}
-
-function actualizarRAMCarrito(ram){
-    carritoCompras[2]= ram;
-    ramElegidoJSON = JSON.stringify(ramElegido);
-    localStorage.setItem("ram", ramElegidoJSON);
-}
-
-function traerListadoStorage(){
-    carritoCompras[0] = JSON.parse(localStorage.getItem("procesador"));
-    carritoCompras[1] = JSON.parse(localStorage.getItem("gpu"));
-    carritoCompras[2] = JSON.parse(localStorage.getItem("ram"));
-}
-
-function traerListadoPrevio(){
-    traerListadoStorage();
-    for (const producto of carritoCompras){
-        listadoCarritoPrevio = listadoCarritoPrevio + producto.modelo + " - ";
-    }
-    document.getElementById("listadoCarritoPrevio").innerHTML = listadoCarritoPrevio;
-    actualizarTotalCarrito();
-}
-
-function resetearCarritoActual(){
-    listadoCarritoActual = "";
-}
-
-function actualizarListadoCarrito(){
-
-    for (const producto of carritoCompras){
-        listadoCarritoActual = listadoCarritoActual + producto.modelo + " - ";
-    }
-    document.getElementById("listadoCarritoActual").innerHTML = listadoCarritoActual;
-    actualizarTotalCarrito();
-    resetearCarritoActual();
-}
-
-function actualizarTotalCarrito(){
-    totalCarrito = 0;
-    for (const producto of carritoCompras){
-        totalCarrito = totalCarrito + producto.precio;
-    }
-    document.getElementById("presupuestoCalculado").innerHTML = totalCarrito;
-    console.log(totalCarrito);
-}
-
-window.addEventListener('load', function(){
-    traerListadoPrevio();
-})
+crearCards();
