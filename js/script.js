@@ -35,7 +35,7 @@ function crearCards(){
     for(const producto of listaProductos){
         producto.id = i++;
         $(`#${producto.categoria}`).append( ` <div>
-                                <h3 class="card_title"> ${producto.modelo}</h3>
+                                <h3 class="card_title rainbow_text_animated"> ${producto.modelo}</h3>
                                 <img src=${producto.portada} class="card_portada" alt="imagenFachera">
                                 <p class="card_price"> $${producto.precio}</p>
                                 <button onclick="agregarAlCarrito(${producto.id})" class="card_btn" >Agregar al carrito</button>
@@ -43,22 +43,22 @@ function crearCards(){
     }
 }
 
-if(localStorage.getItem("total-carrito-storage") === null){
-    localStorage.setItem("total-carrito-storage", 0);
+if(localStorage.getItem("total_carrito_storage") === null){
+    localStorage.setItem("total_carrito_storage", 0);
 }
 
-let totalCarrito = parseInt(localStorage.getItem("total-carrito-storage"));
+let totalCarrito = parseInt(localStorage.getItem("total_carrito_storage"));
 let modelos = [];
 modelos.push(localStorage.getItem("listado_productos"));
 
-document.getElementsByClassName("total-carrito")[0].innerHTML = "$"+localStorage.getItem("total-carrito-storage");
-document.getElementsByClassName("lista-productos-carrito")[0].innerHTML = localStorage.getItem("listado_productos");
+document.getElementsByClassName("total_carrito")[0].innerHTML = "$"+localStorage.getItem("total_carrito_storage");
+document.getElementsByClassName("lista_productos_carrito")[0].innerHTML = localStorage.getItem("listado_productos");
 
 function actualizarCarrito(){
-    localStorage.setItem("total-carrito-storage", totalCarrito);
+    localStorage.setItem("total_carrito_storage", totalCarrito);
     localStorage.setItem("listado_productos", modelos.join(" - "));
-    document.getElementsByClassName("total-carrito")[0].innerHTML = "$"+totalCarrito;
-    document.getElementsByClassName("lista-productos-carrito")[0].innerHTML = modelos.join(" - ");
+    document.getElementsByClassName("total_carrito")[0].innerHTML = "$"+totalCarrito;
+    document.getElementsByClassName("lista_productos_carrito")[0].innerHTML = modelos.join(" - ");
 }
     
 function agregarAlCarrito(pos){
@@ -71,7 +71,7 @@ function agregarAlCarrito(pos){
 function vaciarCarrito(){
     modelos = [];
     totalCarrito=0;
-    localStorage.setItem("total-carrito-storage", totalCarrito);
+    localStorage.setItem("total_carrito_storage", totalCarrito);
     localStorage.setItem("listado_productos", modelos.join(" - "));
     actualizarCarrito();   
 }

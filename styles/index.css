@@ -91,9 +91,9 @@ body {
 
 .card {
     display: inline-block;
-    box-shadow: 0px 10px 10px 0px rgba(243, 121, 7, 0.1);
+    box-shadow: 5px 5px 15px rgba(3, 35, 77, 60%);
     background-color: rgb(255, 255, 255);
-    border-radius: 16px;
+    border-radius: 20px;
     margin: 12px;
     width: 300px;
     height: 350px;
@@ -103,12 +103,14 @@ body {
 .card_title{
     text-align: center;
     font-size: 20px;
+    margin-top: 15px;  
 }
 
 .card_portada {
     width: auto;
     height: 50%;
-    margin-left: 25%;  
+    margin-left: 25%;
+    margin-top: 10px;  
 }
 
 .card_price {
@@ -129,8 +131,9 @@ body {
 	color:#ffffff;
 	font-size:15px;
 	font-weight:bold;
-	padding:8px 10px;
+	padding: 8px 10px;
     margin-left: 90px;
+    margin-top: 20px;
 }
 .card_btn:hover {
 	background-color:#15607e;
@@ -141,7 +144,7 @@ body {
 	top:2px;
 }
 
-.section-carrito {
+.section_carrito {
     display: block;
     margin: auto;
     width: 89%;
@@ -150,26 +153,26 @@ body {
 
 .card_carrito {
     display: block;
-    box-shadow: 0px 5px 20px 0px rgba(69, 67, 96, 0.1);
+    box-shadow: 0px 5px 10px 0px rgba(117, 114, 155, 0.1);
     background-color: white;
     border-radius: 16px;
     width: 150px;
-    height: 50px;
+    height: 30px;
     margin-top: 25px;
 }
 
 .card_carrito_productos {
     display: flex;
-    box-shadow: 0px 5px 20px 0px rgba(69, 67, 96, 0.1);
+    box-shadow: 0px 5px 10px 0px rgba(69, 67, 96, 0.1);
     background-color: white;
     border-radius: 16px;
-    width: 40%;
+    width: 50%;
 }
 
 .titulo_carrito_productos {
     position: static;
     display: inline-block;
-    margin-left: 15px;
+    margin-left: 10px;
     
 }
 
@@ -182,6 +185,7 @@ body {
 
 .total_carrito{
     display: inline-block;
+    margin-left: 10px;
 }
 
 
