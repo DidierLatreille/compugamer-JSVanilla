@@ -55,6 +55,6 @@ function vaciarCarrito(){
     actualizarCarrito();   
 }
 
-comprobarEnMemoria();
-ordernarListaProductos();
 crearCards();
+ordernarListaProductos();
+comprobarEnMemoria();
