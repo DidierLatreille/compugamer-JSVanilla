@@ -1,6 +1,7 @@
 let totalCarrito = parseInt(localStorage.getItem("total_carrito_storage"));
 let modelos = [];
 let listaProductos = [cpu1,cpu2,cpu3,gpu1,gpu2,gpu3,ram1,ram2,ram3];
+const URLCreador = "js/datosCreador.json"
 
 function comprobarEnMemoria(){
     if(localStorage.getItem("total_carrito_storage") === null){
@@ -66,3 +67,17 @@ $(document).ready(function(){
     fadeBody(1.5);
 });
 
+$("#creador").prepend('<button id="btnCreador">Obtener Informacion del creador</button>');
+
+$("#btnCreador").click(() => {
+    $.getJSON(URLCreador, function (respuesta, estado){
+        if (estado === "success"){
+            let misDatos = respuesta;
+            $("#datos").prepend(`<div>
+                                    <h3 class="nombreApellido rainbow_text_animated">${misDatos.nombre}</h3>
+                                    <h3 class="nombreApellido rainbow_text_animated">${misDatos.apellido}</h3>
+                                </div>`); 
+        }
+    })
+    document.getElementById("btnCreador").disabled = true
+})
