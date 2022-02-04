@@ -11,7 +11,6 @@ class Producto{
 const cpu1 = new Producto("Ryzen 5 2600", "assets/r5_2600.png", 22000, "cpus");
 const cpu2 = new Producto("Ryzen 5 3600", "assets/r5_3600.png", 30000, "cpus");
 const cpu3 = new Producto("Ryzen 5 5600", "assets/r5_5600.png", 43000, "cpus");
-const cpu4 = new Producto("Ryzen 5 5600", "assets/r5_5600.png", 43000, "cpus");
 
 const gpu1 = new Producto("RX 580", "assets/rx_580.png", 100000, "gpus");
 const gpu2 = new Producto("RX 6700XT", "assets/rx_6700xt.png", 250000, "gpus");

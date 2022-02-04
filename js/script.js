@@ -1,6 +1,6 @@
 let totalCarrito = parseInt(localStorage.getItem("total_carrito_storage"));
 let modelos = [];
-let listaProductos = [cpu2,cpu1,cpu3,gpu1,gpu2,gpu3,ram1,ram2,ram3];
+let listaProductos = [cpu1,cpu2,cpu3,gpu1,gpu2,gpu3,ram1,ram2,ram3];
 
 function comprobarEnMemoria(){
     if(localStorage.getItem("total_carrito_storage") === null){
@@ -13,7 +13,7 @@ function comprobarEnMemoria(){
     document.getElementsByClassName("lista_productos_carrito")[0].innerHTML = localStorage.getItem("listado_productos");
 }
 
-function ordernarListaProductos(){
+function ordenarListaProductos(){
     listaProductos.sort(function (a, b){
         return (a.precio - b.precio)
     })
@@ -60,8 +60,8 @@ function fadeBody(Segundos){
 }
 
 $(document).ready(function(){
+    ordenarListaProductos();
     crearCards();
-    ordernarListaProductos();
     comprobarEnMemoria();
     fadeBody(1.5);
 });
