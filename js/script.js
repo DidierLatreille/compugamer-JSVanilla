@@ -55,6 +55,14 @@ function vaciarCarrito(){
     actualizarCarrito();   
 }
 
-crearCards();
-ordernarListaProductos();
-comprobarEnMemoria();
+function fadeBody(Segundos){
+    $("body").fadeIn(Segundos*1000);
+}
+
+$(document).ready(function(){
+    crearCards();
+    ordernarListaProductos();
+    comprobarEnMemoria();
+    fadeBody(1.5);
+});
+
