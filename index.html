@@ -9,11 +9,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;700&display=swap" rel="stylesheet">
-    <script src="js/productos.js"></script>
+    <script src="js/productos.json"></script>
 </head>
 <body>
     <div id="banner" class="banner">
         <h1 class="tituloBanner">COMPUGAMER</h1>
+        <a class="tienda_link" href="index.html">
+            <h3 class="nav_texto_link">Tienda</h3>
+        </a>
+        <a class="carrito_link" href="carrito.html">
+            <h3 class="nav_texto_link">Carrito</h3>
+            <img class="carritoFachero" src="assets/carrito.png" alt="carritoFachero">
+        </a>
     </div>
     <div class="cajaPresupuesto">
 
@@ -40,11 +47,6 @@
                 <p class="total_carrito"></p> 
             </div>  
             <img onclick="vaciarCarrito()" class= "tacho" src="assets/tacho.png" alt="tachito">
-        </section>
-        <section class="creador">
-            <div id="creador"></div>
-            Nombre del creador: 
-            <div id="datos"></div>
         </section>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>

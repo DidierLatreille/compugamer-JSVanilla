@@ -2,6 +2,7 @@
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
+    text-decoration: none;
 }
 
 html {
@@ -10,14 +11,12 @@ html {
 
 body {
     display: none;
-    padding: 0px;
-    margin: 0px;
     background-color: #efecec;
     font-family: 'Dosis', sans-serif;
     scroll-behavior: smooth;
     overflow-y: scroll;
 }
-/* TITULO */
+/* BANNER */
 
 .banner{
     position: fixed;
@@ -35,18 +34,28 @@ body {
     font-family: 'Dosis', sans-serif;
     font-weight: 600;
     font-size: 60px;
+    color: rgb(17, 4, 47);;
 }
 
-.carrito_img{
-    width: 40px;
+.carrito_link{
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.carritoFachero{
+    width: 30px;
+}
+
+.nav_texto_link{
+    color: black;
 }
 
 /* SECCION PRODUCTOS */
 
 .cajaPresupuesto{
-    display: absolute;
     padding: 100px;
-    background-color: rgb(238, 238, 238);
+    background-color: rgb(17, 4, 47);
     box-shadow: 5px 1px 5px rgb(146, 146, 146);
 }
 
@@ -66,6 +75,7 @@ body {
     color: transparent;
     animation: rainbow_animation 6s ease-in-out infinite;
     background-size: 400% 100%;
+    text-decoration: none;
 }
 
 @keyframes rainbow_animation {
@@ -84,22 +94,23 @@ body {
     font-family: 'Dosis', sans-serif;
     font-weight: 600;
     font-size: 25px;
+    color: rgb(241, 194, 41);
 }
 
 .card_productos{
-    margin: auto;
-    width: 90%;
-    padding: 10px;
+    display: inline-block;
+    width: 100%;
 }
 
 .card {
-    display: inline-block;
+    display: inline-flex;
+    flex-direction: column;
     box-shadow: 5px 5px 15px rgba(3, 35, 77, 60%);
     background-color: rgb(255, 255, 255);
     border-radius: 20px;
     margin: 12px;
-    width: 300px;
-    height: 350px;
+    width: 250px;
+    height: 300px;
     overflow: hidden;
 }
 
@@ -110,10 +121,10 @@ body {
 }
 
 .card_portada {
-    width: auto;
-    height: 50%;
-    margin-left: 25%;
-    margin-top: 10px;  
+    width: 70%;
+    height: auto;
+    display: inline-flex;
+    justify-content: center;
 }
 
 .card_price {
@@ -124,22 +135,21 @@ body {
 }
 
 .card_btn {
+    display: inline-flex;
+    justify-content: center;
     font-family: 'Dosis', sans-serif;
 	box-shadow: 0px 10px 6px -7px #000000;
-	background-color:#04435c;
+	background-color:rgb(17, 4, 47);;
 	border-radius:9px;
     border-color: rgb(255, 197, 71);
-	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
 	font-size:15px;
 	font-weight:bold;
-	padding: 8px 10px;
-    margin-left: 90px;
-    margin-top: 20px;
+	padding: 8px 10px;  
 }
 .card_btn:hover {
-	background-color:#15607e;
+	background-color:rgb(42, 22, 90);;
     border-color: rgb(241, 118, 16);
 }
 .card_btn:active {
@@ -147,22 +157,24 @@ body {
 	top:2px;
 }
 
+/* CARRITO */
 
 .nav_bar_carrito {
     display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
+    width: 100%;
 }
 
 .card_carrito_productos {
     box-shadow: 0px 5px 10px 0px rgba(69, 67, 96, 0.1);
     background-color: white;
     border-radius: 16px;
-    width: 100%;
 }
 
 .titulo_carrito_productos {
     margin-left: 10px;
-    
 }
 
 .lista_productos_carrito{

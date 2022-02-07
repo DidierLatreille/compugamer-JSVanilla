@@ -1,7 +1,7 @@
 let totalCarrito = parseInt(localStorage.getItem("total_carrito_storage"));
 let modelos = [];
-let listaProductos = [cpu1,cpu2,cpu3,gpu1,gpu2,gpu3,ram1,ram2,ram3];
-const URLCreador = "js/datosCreador.json"
+let listaProductos = [];
+const URLProductos = "js/productos.json";
 
 function comprobarEnMemoria(){
     if(localStorage.getItem("total_carrito_storage") === null){
@@ -14,6 +14,7 @@ function comprobarEnMemoria(){
     document.getElementsByClassName("lista_productos_carrito")[0].innerHTML = localStorage.getItem("listado_productos");
 }
 
+
 function ordenarListaProductos(){
     listaProductos.sort(function (a, b){
         return (a.precio - b.precio)
@@ -22,16 +23,28 @@ function ordenarListaProductos(){
 
 function crearCards(){
     let i = 0;
-
     for(const producto of listaProductos){
         producto.id = i++;
-        $(`#${producto.categoria}`).append( ` <div>
-                                <h3 class="card_title rainbow_text_animated"> ${producto.modelo}</h3>
-                                <img src=${producto.portada} class="card_portada" alt="imagenFachera">
-                                <p class="card_price"> $${producto.precio}</p>
-                                <button onclick="agregarAlCarrito(${producto.id})" class="card_btn" >Agregar al carrito</button>
-                                </div>`).find('div:last').addClass('card');  
+        $(`#${producto.categoria}`).append(` <div>
+            <h3 class="card_title rainbow_text_animated"> ${producto.modelo}</h3>
+            <img src=${producto.portada} class="card_portada" alt="imagenFachera">
+            <p class="card_price"> $${producto.precio}</p>
+            <button onclick="agregarAlCarrito(${producto.id})" class="card_btn" >Agregar al carrito</button>
+            </div>`).find('div:last').addClass('card');
     }
+}
+
+function traerProductos(){
+    $.getJSON(URLProductos, function (respuesta, estado){
+        if (estado === "success"){
+            let misDatos = respuesta;
+            for(const producto of misDatos){
+                listaProductos.push(producto);
+            }
+        }
+    ordenarListaProductos();
+    crearCards();
+    });
 }
 
 function actualizarCarrito(){
@@ -61,23 +74,7 @@ function fadeBody(Segundos){
 }
 
 $(document).ready(function(){
-    ordenarListaProductos();
-    crearCards();
     comprobarEnMemoria();
+    traerProductos();
     fadeBody(1.5);
 });
-
-$("#creador").prepend('<button id="btnCreador">Obtener Informacion del creador</button>');
-
-$("#btnCreador").click(() => {
-    $.getJSON(URLCreador, function (respuesta, estado){
-        if (estado === "success"){
-            let misDatos = respuesta;
-            $("#datos").prepend(`<div>
-                                    <h3 class="nombreApellido rainbow_text_animated">${misDatos.nombre}</h3>
-                                    <h3 class="nombreApellido rainbow_text_animated">${misDatos.apellido}</h3>
-                                </div>`); 
-        }
-    })
-    document.getElementById("btnCreador").disabled = true
-})
