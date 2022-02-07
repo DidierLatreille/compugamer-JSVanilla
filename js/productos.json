@@ -1,84 +1,55 @@
 
 [
     {
-        "id": null,
         "modelo": "Ryzen 5 2600",
         "portada": "assets/r5_2600.png",
         "precio":22000,
         "categoria":"cpus"
     },
     {
-        "id": null,
         "modelo": "Ryzen 5 3600",
         "portada": "assets/r5_3600.png",
         "precio":30000,
         "categoria":"cpus"
     },
     {
-        "id": null,
         "modelo": "Ryzen 5 5600",
         "portada": "assets/r5_5600.png",
         "precio":43000,
         "categoria":"cpus"
     },
     {
-        "id": null,
-        "modelo": "Ryzen 5 5600",
-        "portada": "assets/r5_5600.png",
-        "precio":43000,
-        "categoria":"cpus"
-    },
-    {
-        "id": null,
-        "modelo": "Ryzen 5 5600",
-        "portada": "assets/r5_5600.png",
-        "precio":43000,
-        "categoria":"cpus"
-    },
-    {
-        "id": null,
-        "modelo": "Ryzen 5 5600",
-        "portada": "assets/r5_5600.png",
-        "precio":43000,
-        "categoria":"cpus"
-    },
-    {
-        "id": null,
         "modelo": "RX 580",
         "portada": "assets/rx_580.png",
         "precio":100000,
         "categoria":"gpus"
     },
     {
-        "id": null,
         "modelo": "RX 6700XT",
         "portada": "assets/rx_6700xt.png",
         "precio":250000,
         "categoria":"gpus"
     },
     {
-        "id": null,
         "modelo": "RX 6800XT",
         "portada": "assets/rx_6800xt.png",
         "precio":400000,
         "categoria":"gpus"
     },
     {
-        "id": null ,
+
         "modelo": "Corsair 16GB (3000MHZ)",
         "portada": "assets/corsair_16.png",
         "precio":10500,
         "categoria":"rams"
     },
     {
-        "id": null,
         "modelo": "HyperX 16GB (3200MHZ)",
         "portada": "assets/hyperx_16.png",
-        "precio":144500,
+        "precio":14500,
         "categoria":"rams"
     },
     {
-        "id": null,
         "modelo": "Trident 16GB (3600MHZ)",
         "portada": "assets/trident_16.png",
         "precio":20000,
