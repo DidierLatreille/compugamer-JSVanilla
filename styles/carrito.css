@@ -1,0 +1,52 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    display: none;
+    background-color: #efecec;
+    font-family: 'Dosis', sans-serif;
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+}
+/* BANNER */
+
+.banner{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100px;
+    background-color: rgb(241, 118, 16);
+    box-shadow: 5px 1px 5px black;
+}
+
+.tituloBanner{
+    margin: 10px;
+    font-family: 'Dosis', sans-serif;
+    font-weight: 600;
+    font-size: 60px;
+    color: rgb(17, 4, 47);;
+}
+
+.carrito_link{
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.carritoFachero{
+    width: 30px;
+}
+
+.nav_texto_link{
+    color: black;
+}
