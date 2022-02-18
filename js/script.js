@@ -11,7 +11,7 @@ function ordenarListaProductos(){
     })
 }
 
-function crearCards(){
+function idCantidadCrearCards(){
     let i = 0;
     for(const producto of listaProductos){
         producto.cantidad = 0;
@@ -25,6 +25,27 @@ function crearCards(){
     }
 }
 
+function crearCards(){
+    for(const producto of listaProductos){
+        $(`#${producto.categoria}`).append(` <div>
+            <h3 class="card_title rainbow_text_animated"> ${producto.modelo}</h3>
+            <img src=${producto.portada} class="card_portada" alt="imagenFachera">
+            <p class="card_price"> $${producto.precio}</p>
+            <button onclick="agregarAlCarrito(${producto.id})" class="card_btn" >Agregar al carrito</button>
+            </div>`).find('div:last').addClass('card');
+    }
+}
+
+function traerCantidadesActualizadas(){
+    if(localStorage.getItem("listadoProductosCant") != null){
+        listaProductos = JSON.parse(localStorage.getItem("listadoProductosCant"));
+        crearCards();
+    }
+    else{
+        traerProductos();
+    }
+}
+
 function traerProductos(){
     $.getJSON(URLProductos, function (respuesta, estado){
         if (estado === "success"){
@@ -33,8 +54,9 @@ function traerProductos(){
                 listaProductos.push(producto);
             }
         }
+    
     ordenarListaProductos();
-    crearCards();
+    idCantidadCrearCards();
     });
 }
 // CARRITO //
@@ -82,13 +104,22 @@ function agregarAlCarrito(pos){
     (modelosEnCarrito[pos].cantidad)++;
     totalCarrito = calcularTotal();
     actualizarCarrito();
+    /*localStorage.setItem("listadoProductosCant", "");*/
+    localStorage.setItem("listadoProductosCant", JSON.stringify(listaProductos));
 }
+
+/*function traerCantidadesActualizadas(){
+    if(localStorage.getItem("listadoProductosCant") != null){
+        listaProductos = [];
+        listaProductos = JSON.parse(localStorage.getItem("listadoProductosCant"));
+    }
+}*/
 
 function fadeBody(Segundos){
     $("body").fadeIn(Segundos*1000);
 }
 
 $(document).ready(function(){
-    traerProductos();
+    traerCantidadesActualizadas();
     fadeBody(1.5);
 });
