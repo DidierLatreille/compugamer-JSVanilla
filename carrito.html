@@ -21,8 +21,23 @@
             <img class="carritoFachero" src="assets/carrito.png" alt="carritoFachero">
         </a>
     </div>
-    <div class="cajaCarrito">
-        
+    <div class="contenedorTotal">
+        <div id="cajaCarrito" class="cajaCarrito">
+            <h1 class="tituloCarrito">Carrito de compras</h1>
+        </div>
+        <div>
+            <section class="nav_bar_carrito">
+                <div class="card_carrito_productos">
+                    <h3 class="titulo_carrito_productos">Carrito: </h3>
+                    <p class="lista_productos_carrito"></p>   
+                </div>
+                <div class="card_carrito_total">
+                    <h3 class="titulo_carrito_total">Total: </h3>
+                    <p class="total_carrito"></p> 
+                </div>  
+                <img onclick="vaciarCarrito()" class= "tacho" src="assets/tacho.png" alt="tachito">
+            </section>
+        </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="js/carrito.js"></script>

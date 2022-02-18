@@ -51,7 +51,7 @@ body {
     color: black;
 }
 
-/* SECCION PRODUCTOS */
+/* SECCION CAJA PRODUCTOS */
 
 .cajaPresupuesto{
     padding: 100px;
@@ -96,6 +96,8 @@ body {
     font-size: 25px;
     color: rgb(241, 194, 41);
 }
+
+/* CARDS PRODUCTOS*/
 
 .card_productos{
     display: inline-block;
