@@ -24,8 +24,7 @@ function actualizarCarrito(){
 function vaciarCarrito(){
     modelos = [];
     totalCarrito=0;
-    localStorage.setItem("total_carrito_storage", totalCarrito);
-    localStorage.setItem("listado_productos", modelos.join(" - "));
+    localStorage.clear();
     actualizarCarrito();
     $(".cardCarrito").remove();
 }

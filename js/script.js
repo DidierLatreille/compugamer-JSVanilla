@@ -1,7 +1,9 @@
 let totalCarrito;
 let modelosEnCarrito = [];
 let listaProductos = [];
+let listaFiltrada = [];
 const URLProductos = "js/productos.json";
+let listaProductosPrueba = [];
 
 // MOSTRAR PRODUCTOS //
 
@@ -32,6 +34,7 @@ function crearCards(){
             <img src=${producto.portada} class="card_portada" alt="imagenFachera">
             <p class="card_price"> $${producto.precio}</p>
             <button onclick="agregarAlCarrito(${producto.id})" class="card_btn" >Agregar al carrito</button>
+            <p></p>
             </div>`).find('div:last').addClass('card');
     }
 }
@@ -58,6 +61,27 @@ function traerProductos(){
     ordenarListaProductos();
     idCantidadCrearCards();
     });
+}
+
+function traerProductosPrueba(){
+    $.getJSON(URLProductos, function (respuesta, estado){
+        if (estado === "success"){
+            let misDatos = respuesta;
+            let i = 0;
+            for(const producto of misDatos){
+                producto.cantidad = 0;
+                producto.id = i++;
+                listaProductosPrueba.push(producto);
+            }
+        }
+    });
+}
+
+function volcarFiltadoListaProductos(){
+    listaFiltrada  = JSON.parse(localStorage.getItem("prueba"));
+    for(const elemento of listaFiltrada){
+        listaProductosPrueba[elemento.id] = elemento;
+    }
 }
 // CARRITO //
 
@@ -99,21 +123,20 @@ function calcularTotal(){
     return totalCarro;
 }
 
+function eliminarVacios(){
+    let listadoFiltrado = listaProductos.filter(x => x.cantidad > 0);
+    return listadoFiltrado;
+}
+
 function agregarAlCarrito(pos){
     modelosEnCarrito[pos] = listaProductos[pos];
     (modelosEnCarrito[pos].cantidad)++;
     totalCarrito = calcularTotal();
     actualizarCarrito();
-    /*localStorage.setItem("listadoProductosCant", "");*/
+    eliminarVacios();
     localStorage.setItem("listadoProductosCant", JSON.stringify(listaProductos));
+    localStorage.setItem("prueba", JSON.stringify(eliminarVacios()));
 }
-
-/*function traerCantidadesActualizadas(){
-    if(localStorage.getItem("listadoProductosCant") != null){
-        listaProductos = [];
-        listaProductos = JSON.parse(localStorage.getItem("listadoProductosCant"));
-    }
-}*/
 
 function fadeBody(Segundos){
     $("body").fadeIn(Segundos*1000);
