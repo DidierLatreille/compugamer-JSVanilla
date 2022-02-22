@@ -3,15 +3,8 @@ let modelosEnCarrito = [];
 let listaProductos = [];
 let listaFiltrada = [];
 const URLProductos = "js/productos.json";
-let listaProductosPrueba = [];
 
 // MOSTRAR PRODUCTOS //
-
-function ordenarListaProductos(){
-    listaProductos.sort(function (a, b){
-        return (a.precio - b.precio)
-    })
-}
 
 function idCantidadCrearCards(){
     let i = 0;
@@ -40,9 +33,21 @@ function crearCards(){
 }
 
 function traerCantidadesActualizadas(){
-    if(localStorage.getItem("listadoProductosCant") != null){
-        listaProductos = JSON.parse(localStorage.getItem("listadoProductosCant"));
-        crearCards();
+    if(localStorage.getItem("itemsSeleccionados") != null){
+        listaProductos = [];
+        $.getJSON(URLProductos, function (respuesta, estado){
+            if (estado === "success"){
+                let misDatos = respuesta;
+                let i = 0;
+                for(const producto of misDatos){
+                    producto.cantidad = 0;
+                    producto.id = i++;
+                    listaProductos.push(producto);
+                }
+            }
+        volcarFiltradoListaProductos();
+        crearCards();    
+        });
     }
     else{
         traerProductos();
@@ -57,30 +62,14 @@ function traerProductos(){
                 listaProductos.push(producto);
             }
         }
-    
-    ordenarListaProductos();
     idCantidadCrearCards();
     });
 }
 
-function traerProductosPrueba(){
-    $.getJSON(URLProductos, function (respuesta, estado){
-        if (estado === "success"){
-            let misDatos = respuesta;
-            let i = 0;
-            for(const producto of misDatos){
-                producto.cantidad = 0;
-                producto.id = i++;
-                listaProductosPrueba.push(producto);
-            }
-        }
-    });
-}
-
-function volcarFiltadoListaProductos(){
-    listaFiltrada  = JSON.parse(localStorage.getItem("prueba"));
+function volcarFiltradoListaProductos(){
+    listaFiltrada  = JSON.parse(localStorage.getItem("itemsSeleccionados"));
     for(const elemento of listaFiltrada){
-        listaProductosPrueba[elemento.id] = elemento;
+        listaProductos[elemento.id] = elemento;
     }
 }
 // CARRITO //
@@ -134,8 +123,7 @@ function agregarAlCarrito(pos){
     totalCarrito = calcularTotal();
     actualizarCarrito();
     eliminarVacios();
-    localStorage.setItem("listadoProductosCant", JSON.stringify(listaProductos));
-    localStorage.setItem("prueba", JSON.stringify(eliminarVacios()));
+    localStorage.setItem("itemsSeleccionados", JSON.stringify(eliminarVacios()));
 }
 
 function fadeBody(Segundos){
