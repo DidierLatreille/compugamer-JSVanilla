@@ -32,7 +32,7 @@ body {
     font-family: 'Dosis', sans-serif;
     font-weight: 600;
     font-size: 60px;
-    color: rgb(17, 4, 47);;
+    color: rgb(17, 4, 47);
 }
 
 .carrito_link{
@@ -67,23 +67,7 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
-    width: 100%;
-}
-
-.card_carrito_productos {
-    box-shadow: 0px 5px 10px 0px rgba(69, 67, 96, 0.1);
-    background-color: white;
-    border-radius: 16px;
-}
-
-.titulo_carrito_productos {
-    margin-left: 10px;
-}
-
-.lista_productos_carrito{
-    display: flex;
-    margin-left: 10px;
-    padding-top: 5px;
+    width: 1%;
 }
 
 .card_carrito_total {
@@ -93,6 +77,10 @@ body {
     border-radius: 16px;
     width: 150px;
     height: 30px;
+}
+
+.tituloCarrito{
+    margin-left: 10px;
 }
 
 .titulo_carrito_total {
@@ -138,9 +126,10 @@ body {
 }
 
 .card_portada {
+    height: 55%;
     width: 70%;
-    height: auto;
     margin-left: 15%;
+    margin-top: 5%;
 }
 
 .card_price {
@@ -152,18 +141,34 @@ body {
 
 .card_cantidad {
     font-family: 'Dosis', sans-serif;
-	box-shadow: 0px 10px 6px -7px #000000;
-	background-color:rgb(17, 4, 47);;
+	box-shadow: 3px 5px 5px -7px #383838;
+	background-color:rgb(17, 4, 47);
 	border-radius:30px;
     border-color: rgb(255, 197, 71);
 	color:#ffffff;
 	font-size:15px;
 	font-weight:bold;
-	padding: 8px 10px;
+	padding: 8px 0px;
     width: 15%;
-    margin: 0px 40%;
     margin-top: 1%;  
 }
+
+.seccionCantidad{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.botonCantidad{
+    background-color:rgb(231, 157, 38);
+    color:#ffffff;
+    width: 13%;
+    height: 80%;
+    border-radius:30px;
+    margin-top: 1%;
+    margin: 0px 10px;
+}
+
 .card_btn:hover {
 	background-color:rgb(42, 22, 90);;
     border-color: rgb(241, 118, 16);

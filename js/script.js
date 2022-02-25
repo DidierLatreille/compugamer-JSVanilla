@@ -33,7 +33,7 @@ function crearCards(){
 }
 
 function traerCantidadesActualizadas(){
-    if(localStorage.getItem("itemsSeleccionados") != null){
+    if(localStorage.getItem("listado_productos") != null){
         listaProductos = [];
         $.getJSON(URLProductos, function (respuesta, estado){
             if (estado === "success"){
@@ -67,9 +67,10 @@ function traerProductos(){
 }
 
 function volcarFiltradoListaProductos(){
-    listaFiltrada  = JSON.parse(localStorage.getItem("itemsSeleccionados"));
-    for(const elemento of listaFiltrada){
-        listaProductos[elemento.id] = elemento;
+    for(const elemento of modelosEnCarrito){
+        if(elemento != null){
+            listaProductos[elemento.id] = elemento;
+        }
     }
 }
 // CARRITO //
@@ -93,9 +94,12 @@ function traerCarritoMem(){
     }
 }
 
-carritoVacio();
-traerTotalMem();
-traerCarritoMem();
+function checkearValoresStorage(){
+    carritoVacio();
+    traerTotalMem();
+    traerCarritoMem();
+}
+
 
 function actualizarCarrito(){
     localStorage.setItem("total_carrito_storage", totalCarrito);
@@ -103,7 +107,7 @@ function actualizarCarrito(){
 }
 
 function calcularTotal(){
-    totalCarro = 0;
+    let totalCarro = 0;
     for(const elemento of modelosEnCarrito){
         if(elemento != null){
             totalCarro += (elemento.cantidad * elemento.precio);
@@ -112,18 +116,11 @@ function calcularTotal(){
     return totalCarro;
 }
 
-function eliminarVacios(){
-    let listadoFiltrado = listaProductos.filter(x => x.cantidad > 0);
-    return listadoFiltrado;
-}
-
 function agregarAlCarrito(pos){
     modelosEnCarrito[pos] = listaProductos[pos];
     (modelosEnCarrito[pos].cantidad)++;
     totalCarrito = calcularTotal();
     actualizarCarrito();
-    eliminarVacios();
-    localStorage.setItem("itemsSeleccionados", JSON.stringify(eliminarVacios()));
 }
 
 function fadeBody(Segundos){
@@ -131,6 +128,7 @@ function fadeBody(Segundos){
 }
 
 $(document).ready(function(){
+    checkearValoresStorage();
     traerCantidadesActualizadas();
     fadeBody(1.5);
 });

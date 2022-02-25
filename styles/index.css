@@ -123,13 +123,13 @@ body {
 }
 
 .card_portada {
+    height: 55%;
     width: 70%;
-    height: auto;
     margin-left: 15%;
+    margin-top: 5%;
 }
 
 .card_price {
-
     font-size: 20px;
     text-align: center;
     font-family: 'Dosis', sans-serif;
