@@ -47,7 +47,7 @@ function crearCarrito(){
     for(const producto of modelos){
         if(producto != null){
             $(`#cajaCarrito`).append(` <div>
-            <h3 class="card_title rainbow_text_animated"> ${producto.modelo}</h3>
+            <h3 class="card_title"> ${producto.modelo}</h3>
             <img src=${producto.portada} class="card_portada" alt="imagenFachera">
             <p class="card_price"> $${producto.precio}</p>
             <section class="seccionCantidad">
