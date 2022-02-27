@@ -19,6 +19,12 @@
         "categoria":"cpus"
     },
     {
+        "modelo": "Ryzen 5 5800",
+        "portada": "assets/r7_5800.png",
+        "precio":55000,
+        "categoria":"cpus"
+    },
+    {
         "modelo": "RX 580",
         "portada": "assets/rx_580.png",
         "precio":100000,
@@ -34,6 +40,18 @@
         "modelo": "RX 6800XT",
         "portada": "assets/rx_6800xt.png",
         "precio":400000,
+        "categoria":"gpus"
+    },
+    {
+        "modelo": "RTX 3080TI",
+        "portada": "assets/rtx_3080_ti.png",
+        "precio":370000,
+        "categoria":"gpus"
+    },
+    {
+        "modelo": "RTX 3090",
+        "portada": "assets/rtx_3090.png",
+        "precio":525000,
         "categoria":"gpus"
     },
     {

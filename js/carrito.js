@@ -77,6 +77,13 @@ function restarCantidad(id){
     crearCarrito();
 }
 
+function confirmarCompra(){
+    if(calcularTotal() === 0){
+        alert("Carrito Vacio");
+    } else{
+        alert("Gracias por tu compra.\nSe registro tu pedido por un total de $" + calcularTotal() + "\nRecibiras un correo de confirmación en los proximos minutos");
+    }
+}
 
 // LOADING //
 $(document).ready(function(){

@@ -218,14 +218,6 @@ body {
     height: 40px;
 }
 
-.creador{
-    display: inline-block;
-}
-
-.nombreApellido{
-    display: inline-block;
-}
-
 @media (max-width: 480px){
 
     .tituloBanner{
