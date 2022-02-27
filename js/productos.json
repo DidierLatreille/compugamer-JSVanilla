@@ -38,19 +38,19 @@
     },
     {
 
-        "modelo": "Corsair 16GB (3000MHZ)",
+        "modelo": "Corsair 16GB",
         "portada": "assets/corsair_16.png",
         "precio":10500,
         "categoria":"rams"
     },
     {
-        "modelo": "HyperX 16GB (3200MHZ)",
+        "modelo": "HyperX 16GB",
         "portada": "assets/hyperx_16.png",
         "precio":14500,
         "categoria":"rams"
     },
     {
-        "modelo": "Trident 16GB (3600MHZ)",
+        "modelo": "Trident 16GB",
         "portada": "assets/trident_16.png",
         "precio":20000,
         "categoria":"rams"
