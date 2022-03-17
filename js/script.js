@@ -5,21 +5,6 @@ let listaFiltrada = [];
 const URLProductos = "js/productos.json";
 
 // MOSTRAR PRODUCTOS //
-
-function idCantidadCrearCards(){
-    let i = 0;
-    for(const producto of listaProductos){
-        producto.cantidad = 0;
-        producto.id = i++;
-        $(`#${producto.categoria}`).append(` <div>
-            <h3 class="card_title rainbow_text_animated"> ${producto.modelo}</h3>
-            <img src=${producto.portada} class="card_portada" alt="imagenFachera">
-            <p class="card_price"> $${producto.precio}</p>
-            <button onclick="agregarAlCarrito(${producto.id})" class="card_btn" >Agregar al carrito</button>
-            </div>`).find('div:last').addClass('card');
-    }
-}
-
 function crearCards(){
     for(const producto of listaProductos){
         $(`#${producto.categoria}`).append(` <div>
@@ -32,44 +17,28 @@ function crearCards(){
     }
 }
 
-function traerCantidadesActualizadas(){
-    if(localStorage.getItem("listado_productos") != null){
-        listaProductos = [];
-        $.getJSON(URLProductos, function (respuesta, estado){
-            if (estado === "success"){
-                let misDatos = respuesta;
-                let i = 0;
-                for(const producto of misDatos){
-                    producto.cantidad = 0;
-                    producto.id = i++;
-                    listaProductos.push(producto);
-                }
-            }
-        volcarFiltradoListaProductos();
-        crearCards();    
-        });
-    }
-    else{
-        traerProductos();
-    }
-}
-
 function traerProductos(){
     $.getJSON(URLProductos, function (respuesta, estado){
         if (estado === "success"){
             let misDatos = respuesta;
+            let i = 0;
             for(const producto of misDatos){
+                producto.cantidad = 0;
+                producto.id = i++;
                 listaProductos.push(producto);
             }
         }
-    idCantidadCrearCards();
+        volcarFiltradoListaProductos();
+        crearCards();
     });
 }
 
 function volcarFiltradoListaProductos(){
-    for(const elemento of modelosEnCarrito){
-        if(elemento != null){
-            listaProductos[elemento.id] = elemento;
+    if(modelosEnCarrito != ""){
+        for(const elemento of modelosEnCarrito){
+            if(elemento != null){
+                listaProductos[elemento.id] = elemento;
+            }
         }
     }
 }
@@ -129,6 +98,6 @@ function fadeBody(Segundos){
 
 $(document).ready(function(){
     checkearValoresStorage();
-    traerCantidadesActualizadas();
+    traerProductos();
     fadeBody(1.5);
 });
